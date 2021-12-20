@@ -1,5 +1,8 @@
 package com.example.javaeefinal.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,10 +10,10 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Objects;
 
 @Entity
 @NotNull
+@Getter @Setter
 public class HumanResources {
     private int id;
     private String firstName;

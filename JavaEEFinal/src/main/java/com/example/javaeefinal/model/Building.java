@@ -1,15 +1,18 @@
 package com.example.javaeefinal.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Objects;
 
 @Entity
 @NotNull
+@Getter @Setter
 public class Building {
     private int id;
     private BigDecimal rating;
@@ -86,31 +89,6 @@ public class Building {
         this.contactNumber = contactNumber;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//
-//        Building building = (Building) o;
-//
-//        if (id != building.id) return false;
-//        if (Double.compare(building.rating, rating) != 0) return false;
-//        if (!Objects.equals(contactNumber, building.contactNumber))
-//            return false;
-//
-//        return true;
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        int result;
-//        long temp;
-//        result = id;
-//        temp = Double.doubleToLongBits(rating);
-//        result = 31 * result + (int) (temp ^ (temp >>> 32));
-//        result = 31 * result + (contactNumber != null ? contactNumber.hashCode() : 0);
-//        return result;
-//    }
 
     @ManyToOne
     @JoinColumn(name = "address_id", referencedColumnName = "id", nullable = false)

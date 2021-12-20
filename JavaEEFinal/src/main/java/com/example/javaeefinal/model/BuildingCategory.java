@@ -1,5 +1,8 @@
 package com.example.javaeefinal.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -7,6 +10,7 @@ import java.time.format.DateTimeFormatter;
 
 @Entity
 @NotNull
+@Getter @Setter
 public class BuildingCategory {
     private int id;
     private int buildingId;
@@ -58,25 +62,6 @@ public class BuildingCategory {
         this.buildingId = buildingId;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//
-//        BuildingCategory that = (BuildingCategory) o;
-//
-//        if (id != that.id) return false;
-//        if (buildingId != that.buildingId) return false;
-//
-//        return true;
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        int result = id;
-//        result = 31 * result + buildingId;
-//        return result;
-//    }
 
     @OneToOne
     @JoinColumn(name = "id", referencedColumnName = "id", nullable = false)

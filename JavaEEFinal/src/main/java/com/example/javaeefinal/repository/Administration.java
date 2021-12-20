@@ -12,7 +12,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -470,11 +469,126 @@ public class Administration {
         return Response.notModified().build();
     }
 
-//    public static Response deleteBuilding(String param) {}
-//    public static Response deleteBuildingCategory(String param) {}
-//    public static Response deleteCategory(String param) {}
-//    public static Response deleteHumanResources(String param) {}
-//    public static Response deleteJob(String param) {}
-//    public static Response deleteNews(String param) {}
-//    public static Response deleteUser(String param) {}
+    @Transactional(rollbackOn = SQLException.class,
+            dontRollbackOn = EntityExistsException.class)
+    @SuppressWarnings("SqlResolve")
+    public  Response deleteBuilding(int id) {
+        try {
+            PreparedStatement statement = connection.prepareStatement(
+                    "DELETE FROM building WHERE id = ?"
+            );
+            statement.setInt(1, id);
+            int result = statement.executeUpdate();
+            if (result == 1) return  Response.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.serverError().entity(e.getMessage()).build();
+        }
+        return Response.notModified().build();
+    }
+    @Transactional(rollbackOn = SQLException.class,
+            dontRollbackOn = EntityExistsException.class)
+    @SuppressWarnings("SqlResolve")
+    public  Response deleteBuildingCategory(int id) {
+        try {
+            PreparedStatement statement = connection.prepareStatement(
+                    "DELETE FROM buildingcategory WHERE id = ?"
+            );
+            statement.setInt(1, id);
+            int result = statement.executeUpdate();
+            if (result == 1) return  Response.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.serverError().entity(e.getMessage()).build();
+        }
+        return Response.notModified().build();
+    }
+    @Transactional(rollbackOn = SQLException.class,
+            dontRollbackOn = EntityExistsException.class)
+    @SuppressWarnings("SqlResolve")
+    public  Response deleteCategory(int id) {
+        try {
+            PreparedStatement statement = connection.prepareStatement(
+                    "DELETE FROM category WHERE id = ?"
+            );
+            statement.setInt(1, id);
+            int result = statement.executeUpdate();
+            if (result == 1) return  Response.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.serverError().entity(e.getMessage()).build();
+        }
+        return Response.notModified().build();
+    }
+    @Transactional(rollbackOn = SQLException.class,
+            dontRollbackOn = EntityExistsException.class)
+    @SuppressWarnings("SqlResolve")
+    public  Response deleteHumanResources(int id) {
+        try {
+            PreparedStatement statement = connection.prepareStatement(
+                    "DELETE FROM humanresources WHERE id = ?"
+            );
+            statement.setInt(1, id);
+            int result = statement.executeUpdate();
+            if (result == 1) return  Response.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.serverError().entity(e.getMessage()).build();
+        }
+        return Response.notModified().build();
+    }
+
+    @Transactional(rollbackOn = SQLException.class,
+            dontRollbackOn = EntityExistsException.class)
+    @SuppressWarnings("SqlResolve")
+    public  Response deleteJob(int id) {
+        try {
+            PreparedStatement statement = connection.prepareStatement(
+                    "DELETE FROM job WHERE id = ?"
+            );
+            statement.setInt(1, id);
+            int result = statement.executeUpdate();
+            if (result == 1) return  Response.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.serverError().entity(e.getMessage()).build();
+        }
+        return Response.notModified().build();
+    }
+
+    @Transactional(rollbackOn = SQLException.class,
+            dontRollbackOn = EntityExistsException.class)
+    @SuppressWarnings("SqlResolve")
+    public  Response deleteNews(int id) {
+        try {
+            PreparedStatement statement = connection.prepareStatement(
+                    "DELETE FROM news WHERE id = ?"
+            );
+            statement.setInt(1, id);
+            int result = statement.executeUpdate();
+            if (result == 1) return  Response.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.serverError().entity(e.getMessage()).build();
+        }
+        return Response.notModified().build();
+    }
+
+    @Transactional(rollbackOn = SQLException.class,
+            dontRollbackOn = EntityExistsException.class)
+    @SuppressWarnings("SqlResolve")
+    public  Response deleteUser(int id) {
+        try {
+            PreparedStatement statement = connection.prepareStatement(
+                    "DELETE FROM \"User\" WHERE id = ?"
+            );
+            statement.setInt(1, id);
+            int result = statement.executeUpdate();
+            if (result == 1) return  Response.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.serverError().entity(e.getMessage()).build();
+        }
+        return Response.notModified().build();
+    }
 }

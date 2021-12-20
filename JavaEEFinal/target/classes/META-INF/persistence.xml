@@ -14,13 +14,13 @@
         <class>com.example.javaeefinal.model.News</class>
         <class>com.example.javaeefinal.model.User</class>
         <properties>
-            <property name="toplink.jdbc.url" value="jdbc:postgresql://localhost:5432/JavaEEFinal"/>
+            <property name="toplink.jdbc.url" value="jdbc:postgresql://localhost:5432/Final"/>
             <property name="toplink.jdbc.driver" value="org.postgresql.Driver"/>
-            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/JavaEEFinal"/>
+            <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/Final"/>
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
-            <property name="openjpa.ConnectionURL" value="jdbc:postgresql://localhost:5432/JavaEEFinal"/>
+            <property name="openjpa.ConnectionURL" value="jdbc:postgresql://localhost:5432/Final"/>
             <property name="openjpa.ConnectionDriverName" value="org.postgresql.Driver"/>
-            <property name="eclipselink.jdbc.url" value="jdbc:postgresql://localhost:5432/JavaEEFinal"/>
+            <property name="eclipselink.jdbc.url" value="jdbc:postgresql://localhost:5432/Final"/>
             <property name="eclipselink.jdbc.driver" value="org.postgresql.Driver"/>
         </properties>
     </persistence-unit>

@@ -1,13 +1,16 @@
 package com.example.javaeefinal.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Objects;
 
 @Entity
 @NotNull
+@Getter @Setter
 public class User {
     private int id;
     private String firstName;

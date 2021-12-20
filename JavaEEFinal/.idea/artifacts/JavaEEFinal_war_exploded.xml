@@ -15,7 +15,11 @@
           <element id="module-output" name="JavaEEFinal" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: javax.annotation:javax.annotation-api:1.3.2" />
           <element id="library" level="project" name="Maven: org.postgresql:postgresql:42.2.10" />
+          <element id="library" level="project" name="Maven: org.projectlombok:lombok:1.18.22" />
+          <element id="library" level="project" name="Maven: io.jsonwebtoken:jjwt-impl:0.11.1" />
+          <element id="library" level="project" name="Maven: io.jsonwebtoken:jjwt-api:0.11.1" />
         </element>
       </element>
       <element id="directory" name="META-INF">
