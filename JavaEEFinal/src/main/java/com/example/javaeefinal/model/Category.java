@@ -75,27 +75,4 @@ public class Category {
     public void setDescription(String description) {
         this.description = description;
     }
-
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//
-//        Category category = (Category) o;
-//
-//        if (id != category.id) return false;
-//        if (!Objects.equals(title, category.title)) return false;
-//        if (!Objects.equals(description, category.description))
-//            return false;
-//
-//        return true;
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        int result = id;
-//        result = 31 * result + (title != null ? title.hashCode() : 0);
-//        result = 31 * result + (description != null ? description.hashCode() : 0);
-//        return result;
-//    }
 }

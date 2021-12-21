@@ -15,7 +15,9 @@ public class AdministrationService {
 
 
     //create methods
-
+//    public Response auth (String login, String password) throws Exception {
+//        return repository.auth(login,password);
+//    }
 
     //get methods
     public List<Address> getAddresses() {
@@ -39,7 +41,7 @@ public class AdministrationService {
     public List<News> getNews() {
         return repository.getNews();
     }
-    public List<User> getUser() {
+    public List<Users> getUser() {
         return repository.getUser();
     }
 

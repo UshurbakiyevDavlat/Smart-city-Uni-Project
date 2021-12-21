@@ -89,31 +89,4 @@ public class HumanResources {
     public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
     }
-
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//
-//        HumanResources that = (HumanResources) o;
-//
-//        if (id != that.id) return false;
-//        if (!Objects.equals(firstName, that.firstName)) return false;
-//        if (!Objects.equals(secondName, that.secondName)) return false;
-//        if (!Objects.equals(email, that.email)) return false;
-//        if (!Objects.equals(contactNumber, that.contactNumber))
-//            return false;
-//
-//        return true;
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        int result = id;
-//        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-//        result = 31 * result + (secondName != null ? secondName.hashCode() : 0);
-//        result = 31 * result + (email != null ? email.hashCode() : 0);
-//        result = 31 * result + (contactNumber != null ? contactNumber.hashCode() : 0);
-//        return result;
-//    }
 }

@@ -2,6 +2,7 @@ package com.example.javaeefinal.controller;
 
 import com.example.javaeefinal.Security.JWTToken;
 
+import javax.annotation.security.PermitAll;
 import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -23,6 +24,7 @@ public class HelloResource {
         return "Hello, World!";
     }
 
+    @PermitAll
     @GET
     @Path("jwt")
     @JWTToken

@@ -87,26 +87,4 @@ public class Address {
 
     public Address() {
     }
-
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//
-//        Address address = (Address) o;
-//
-//        if (id != address.id) return false;
-//        if (!Objects.equals(city, address.city)) return false;
-//        if (!Objects.equals(streetName, address.streetName)) return false;
-//        return Objects.equals(streetNumber, address.streetNumber);
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        int result = id;
-//        result = 31 * result + (city != null ? city.hashCode() : 0);
-//        result = 31 * result + (streetName != null ? streetName.hashCode() : 0);
-//        result = 31 * result + (streetNumber != null ? streetNumber.hashCode() : 0);
-//        return result;
-//    }
 }

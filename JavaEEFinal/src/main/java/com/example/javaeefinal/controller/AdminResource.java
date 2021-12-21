@@ -1,10 +1,14 @@
 package com.example.javaeefinal.controller;
 
 
+import com.example.javaeefinal.Security.JWTToken;
 import com.example.javaeefinal.model.*;
 import com.example.javaeefinal.service.AdministrationService;
 
 
+import javax.annotation.security.DenyAll;
+import javax.annotation.security.PermitAll;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
@@ -26,9 +30,20 @@ public class AdminResource {
     }
 
     // post methods
-
+    // TODO нужно доделать не работает персистенс кажется
+    @DenyAll
+    @JWTToken
+    @POST
+    @Path("/login")
+    public Response authenticateUser(@FormParam("login") String login,
+                                     @FormParam("password") String password) throws Exception {
+//        return service.auth(login,password);
+        return Response.notModified().build();
+    }
 
     // get methods
+    @RolesAllowed({"ADMIN","owner"})
+    @JWTToken
     @GET
     @Produces("application/json")
     @Path("/getAddress")
@@ -36,6 +51,8 @@ public class AdminResource {
         return service.getAddresses();
     }
 
+    @PermitAll
+    @JWTToken
     @GET
     @Produces("application/json")
     @Path("/getBuildings")
@@ -43,6 +60,8 @@ public class AdminResource {
         return service.getBuildings();
     }
 
+    @PermitAll
+    @JWTToken
     @GET
     @Produces("application/json")
     @Path("/getBuildingsCategory")
@@ -50,6 +69,8 @@ public class AdminResource {
         return service.getBuildingCategory();
     }
 
+    @PermitAll
+    @JWTToken
     @GET
     @Produces("application/json")
     @Path("/getCategory")
@@ -57,6 +78,8 @@ public class AdminResource {
         return service.getCategory();
     }
 
+    @PermitAll
+    @JWTToken
     @GET
     @Produces("application/json")
     @Path("/getHumanResources")
@@ -64,6 +87,8 @@ public class AdminResource {
         return service.getHumanResources();
     }
 
+    @PermitAll
+    @JWTToken
     @GET
     @Produces("application/json")
     @Path("/getJob")
@@ -71,6 +96,8 @@ public class AdminResource {
         return service.getJob();
     }
 
+    @PermitAll
+    @JWTToken
     @GET
     @Produces("application/json")
     @Path("/getNews")
@@ -78,14 +105,18 @@ public class AdminResource {
         return service.getNews();
     }
 
+    @PermitAll
+    @JWTToken
     @GET
     @Produces("application/json")
     @Path("/getUsers")
-    public List<User> getUsers() {
+    public List<Users> getUsers() {
         return service.getUser();
     }
 
     //Put methods
+    @PermitAll
+    @JWTToken
     @PUT
     @Produces("application/json")
     @Path("/updateAddress")
@@ -97,6 +128,8 @@ public class AdminResource {
         return service.updateAddress(param,value,id);
     }
 
+    @RolesAllowed({"ADMIN","owner"})
+    @JWTToken
     @PUT
     @Produces("application/json")
     @Path("/updateBuilding")
@@ -108,6 +141,8 @@ public class AdminResource {
         return service.updateBuilding(param,value,id);
     }
 
+    @RolesAllowed({"ADMIN","owner"})
+    @JWTToken
     @PUT
     @Produces("application/json")
     @Path("/updateBuildingCategory")
@@ -118,6 +153,8 @@ public class AdminResource {
     ) {
         return service.updateBuildingCategory(param,value,id);
     }
+    @RolesAllowed({"ADMIN","owner"})
+    @JWTToken
     @PUT
     @Produces("application/json")
     @Path("/updateCategory")
@@ -129,7 +166,8 @@ public class AdminResource {
         return service.updateCategory(param,value,id);
     }
 
-
+    @RolesAllowed({"ADMIN","owner"})
+    @JWTToken
     @PUT
     @Produces("application/json")
     @Path("/updateHR")
@@ -141,6 +179,8 @@ public class AdminResource {
         return service.updateHR(param,value,id);
     }
 
+    @RolesAllowed("ADMIN")
+    @JWTToken
     @PUT
     @Produces("application/json")
     @Path("/updateJob")
@@ -151,7 +191,8 @@ public class AdminResource {
     ) {
         return service.updateJob(param,value,id);
     }
-
+    @RolesAllowed({"ADMIN","owner"})
+    @JWTToken
     @PUT
     @Produces("application/json")
     @Path("/updateNews")
@@ -163,6 +204,8 @@ public class AdminResource {
         return service.updateNews(param,value,id);
     }
 
+    @RolesAllowed({"ADMIN","owner"})
+    @JWTToken
     @PUT
     @Produces("application/json")
     @Path("/updateUser")
@@ -177,6 +220,8 @@ public class AdminResource {
 
 
     //delete methods
+    @RolesAllowed("owner")
+    @JWTToken
     @DELETE
     @Produces("application/json")
     @Path("/deleteAddress")
@@ -186,6 +231,8 @@ public class AdminResource {
         return service.deleteAddress(id);
     }
 
+    @RolesAllowed("owner")
+    @JWTToken
     @DELETE
     @Produces("application/json")
     @Path("/deleteBuilding")
@@ -195,6 +242,8 @@ public class AdminResource {
         return service.deleteBuilding(id);
     }
 
+    @RolesAllowed("owner")
+    @JWTToken
     @DELETE
     @Produces("application/json")
     @Path("/deleteBuildingCategory")
@@ -205,6 +254,8 @@ public class AdminResource {
     }
 
 
+    @RolesAllowed("owner")
+    @JWTToken
     @DELETE
     @Produces("application/json")
     @Path("/deleteCategory")
@@ -214,6 +265,8 @@ public class AdminResource {
         return service.deleteCategory(id);
     }
 
+    @RolesAllowed("owner")
+    @JWTToken
     @DELETE
     @Produces("application/json")
         @Path("/deleteHR")
@@ -223,6 +276,8 @@ public class AdminResource {
         return service.deleteHR(id);
     }
 
+    @RolesAllowed("owner")
+    @JWTToken
     @DELETE
     @Produces("application/json")
     @Path("/deleteJob")
@@ -232,6 +287,8 @@ public class AdminResource {
         return service.deleteJob(id);
     }
 
+    @RolesAllowed("owner")
+    @JWTToken
     @DELETE
     @Produces("application/json")
     @Path("/deleteNews")
@@ -241,6 +298,8 @@ public class AdminResource {
         return service.deleteNews(id);
     }
 
+    @RolesAllowed("owner")
+    @JWTToken
     @DELETE
     @Produces("application/json")
     @Path("/deleteUser")

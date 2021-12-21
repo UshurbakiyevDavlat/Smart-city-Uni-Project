@@ -6,6 +6,9 @@ import com.example.javaeefinal.model.*;
 
 import javax.ejb.Stateful;
 import javax.persistence.EntityExistsException;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import javax.ws.rs.core.Response;
 import java.sql.Connection;
@@ -20,8 +23,23 @@ import java.util.List;
 public class Administration {
 
 
+    @PersistenceContext
+    private EntityManager em;
+
     private final Connection connection = DBManager.getConnection();
 
+//    // TODO нужно доделать не работает персистенс кажется
+//    public Response auth(String login, String password) throws Exception {
+//        TypedQuery<Users> query = em.createNamedQuery(Users.FIND_BY_LOGIN_PASSWORD, Users.class);
+//        query.setParameter("login", login);
+//        query.setParameter("password",password);
+//        Users users = query.getSingleResult();
+//
+//        if (users == null)
+//            return Response.serverError().entity("Invalid email/password").build();
+//
+//        return Response.accepted().entity("Ok, successfully authorized!").build();
+//    }
 
     @Transactional(rollbackOn = SQLException.class,
             dontRollbackOn = EntityExistsException.class)
@@ -227,18 +245,17 @@ public class Administration {
     @Transactional(rollbackOn = SQLException.class,
             dontRollbackOn = EntityExistsException.class)
     @SuppressWarnings("SqlResolve")
-    public List<User> getUser() {
-        List<User> users = new ArrayList<>();
+    public List<Users> getUser() {
+        List<Users> users = new ArrayList<>();
 
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"User\" ");
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM \"Users\" ");
 
             ResultSet resultSet = statement.executeQuery();
 
-            System.out.println(statement);
 
             while (resultSet.next()) {
-                users.add(new User(
+                users.add(new Users(
                         resultSet.getInt("id"),
                         resultSet.getString("firstname"),
                         resultSet.getString("secondname"),
@@ -433,7 +450,7 @@ public class Administration {
     public Response updateUser(String param, String value, int id) {
         try {
             PreparedStatement statement = connection.prepareStatement(
-                    "UPDATE \"User\" SET " + param + " = ? WHERE id = ?"
+                    "UPDATE \"Users\" SET " + param + " = ? WHERE id = ?"
             );
 
             statement.setString(1, value);
@@ -580,7 +597,7 @@ public class Administration {
     public  Response deleteUser(int id) {
         try {
             PreparedStatement statement = connection.prepareStatement(
-                    "DELETE FROM \"User\" WHERE id = ?"
+                    "DELETE FROM \"Users\" WHERE id = ?"
             );
             statement.setInt(1, id);
             int result = statement.executeUpdate();

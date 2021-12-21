@@ -1,7 +1,7 @@
 package com.example.javaeefinal.cache;
 
 
-import com.example.javaeefinal.model.User;
+import com.example.javaeefinal.model.Users;
 import com.example.javaeefinal.repository.Administration;
 
 import javax.annotation.PostConstruct;
@@ -31,8 +31,8 @@ public class CacheUsers {
     private Map<String, String> createFreshCache() {
         System.out.println("Starting to cache users password: ");
         Map<String, String> map = new HashMap<>();
-        List<User> dataList = administration.getUser();
-        for (User users : dataList) {
+        List<Users> dataList = administration.getUser();
+        for (Users users : dataList) {
             map.put(String.valueOf(users.getId()), users.getPassword());
         }
         System.out.println("completed to cache users password: ");

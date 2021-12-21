@@ -96,35 +96,9 @@ public class Job {
         this.salary = salary;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//
-//        Job job = (Job) o;
-//
-//        if (id != job.id) return false;
-//        if (Double.compare(job.salary, salary) != 0) return false;
-//        if (!Objects.equals(title, job.title)) return false;
-//        if (!Objects.equals(description, job.description)) return false;
-//
-//        return true;
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        int result;
-//        long temp;
-//        result = id;
-//        result = 31 * result + (title != null ? title.hashCode() : 0);
-//        result = 31 * result + (description != null ? description.hashCode() : 0);
-//        temp = Double.doubleToLongBits(salary);
-//        result = 31 * result + (int) (temp ^ (temp >>> 32));
-//        return result;
-//    }
 
     @ManyToOne
-    @JoinColumn(name = "hr_id", referencedColumnName = "id", nullable = false)
+    @PrimaryKeyJoinColumn(name = "hr_id", referencedColumnName = "id")
     public HumanResources getHumanResourcesByHrId() {
         return humanResourcesByHrId;
     }

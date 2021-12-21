@@ -91,7 +91,8 @@ public class Building {
 
 
     @ManyToOne
-    @JoinColumn(name = "address_id", referencedColumnName = "id", nullable = false)
+    @PrimaryKeyJoinColumn(name = "address_id", referencedColumnName = "id")
+
     public Address getAddressByAddressId() {
         return addressByAddressId;
     }

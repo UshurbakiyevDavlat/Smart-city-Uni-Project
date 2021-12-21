@@ -67,26 +67,4 @@ public class News {
     public void setDescription(String description) {
         this.description = description;
     }
-
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//
-//        News news = (News) o;
-//
-//        if (id != news.id) return false;
-//        if (!Objects.equals(title, news.title)) return false;
-//        if (!Objects.equals(description, news.description)) return false;
-//
-//        return true;
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        int result = id;
-//        result = 31 * result + (title != null ? title.hashCode() : 0);
-//        result = 31 * result + (description != null ? description.hashCode() : 0);
-//        return result;
-//    }
 }

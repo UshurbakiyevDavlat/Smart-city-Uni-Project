@@ -11,7 +11,13 @@ import java.time.format.DateTimeFormatter;
 @Entity
 @NotNull
 @Getter @Setter
-public class User {
+// TODO нужно доделать не работает персистенс кажется
+//@NamedQueries({
+//        @NamedQuery(name = Users.FIND_BY_LOGIN_PASSWORD, query = "SELECT u FROM Users u WHERE u.email = :login AND u.password = :password")
+//})
+public class Users {
+//    public static final String FIND_BY_LOGIN_PASSWORD = "User.findByLoginAndPassword";
+
     private int id;
     private String firstName;
     private String secondName;
@@ -21,18 +27,11 @@ public class User {
     private Address addressByAddressId;
     private String created_at;
 
-    public User() {
+    public Users() {
 
     }
 
 
-    public int getAddress_id() {
-        return address_id;
-    }
-
-    public void setAddress_id(int address_id) {
-        this.address_id = address_id;
-    }
 
     public String getCreated_at() {
         return created_at;
@@ -42,7 +41,7 @@ public class User {
         this.created_at = created_at;
     }
 
-    public User(int id, String firstName, String secondName, String email, String password, int addressId, String created_at) {
+    public Users(int id, String firstName, String secondName, String email, String password, int addressId, String created_at) {
         this.id = id;
         this.firstName = firstName;
         this.secondName = secondName;
@@ -59,13 +58,6 @@ public class User {
         this.created_at = resDate;
     }
 
-    public int getAddressId() {
-        return address_id;
-    }
-
-    public void setAddressId(int addressId) {
-        this.address_id = addressId;
-    }
 
     @Id
     @Column(name = "id")
@@ -117,36 +109,18 @@ public class User {
         this.password = password;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//
-//        User user = (User) o;
-//
-//        if (id != user.id) return false;
-//        if (!Objects.equals(firstName, user.firstName)) return false;
-//        if (!Objects.equals(secondName, user.secondName)) return false;
-//        if (!Objects.equals(email, user.email)) return false;
-//        if (!Objects.equals(password, user.password)) return false;
-//
-//        return true;
-//    }
-//
-//    @Override
-//    public int hashCode() {
-//        int result = id;
-//        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-//        result = 31 * result + (secondName != null ? secondName.hashCode() : 0);
-//        result = 31 * result + (email != null ? email.hashCode() : 0);
-//        result = 31 * result + (password != null ? password.hashCode() : 0);
-//        return result;
-//    }
-
     @ManyToOne
-    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    @PrimaryKeyJoinColumn(name = "address_id", referencedColumnName = "id")
     public Address getAddressByAddressId() {
         return addressByAddressId;
+    }
+
+    public int getAddress_id() {
+        return address_id;
+    }
+
+    public void setAddress_id(int address_id) {
+        this.address_id = address_id;
     }
 
     public void setAddressByAddressId(Address addressByAddressId) {

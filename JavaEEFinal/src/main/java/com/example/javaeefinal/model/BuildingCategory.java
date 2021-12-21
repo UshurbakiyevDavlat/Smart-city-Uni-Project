@@ -64,7 +64,7 @@ public class BuildingCategory {
 
 
     @OneToOne
-    @JoinColumn(name = "id", referencedColumnName = "id", nullable = false)
+    @PrimaryKeyJoinColumn(name = "building_id", referencedColumnName = "id")
     public Building getBuildingById() {
         return buildingById;
     }
