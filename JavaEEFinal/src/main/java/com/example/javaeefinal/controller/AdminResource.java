@@ -4,6 +4,7 @@ package com.example.javaeefinal.controller;
 import com.example.javaeefinal.Security.JWTToken;
 import com.example.javaeefinal.model.*;
 import com.example.javaeefinal.service.AdministrationService;
+import com.example.javaeefinal.Security.ListFilterInt;
 
 
 import javax.annotation.security.DenyAll;
@@ -21,6 +22,7 @@ public class AdminResource {
 
     @EJB
     AdministrationService service;
+
 
 
     @GET
@@ -41,9 +43,37 @@ public class AdminResource {
         return Response.notModified().build();
     }
 
+
+    @RolesAllowed({"ADMIN","owner"})
+    @JWTToken
+    @POST
+    @Path("/createUser")
+    public Response createUser(Users users) {
+        return service.createUser(users);
+    }
+
+    @RolesAllowed({"ADMIN","owner"})
+    @JWTToken
+    @POST
+    @Path("/jms")
+    public String sendMessage(Users users) {
+        return service.sendJmsMessage(users);
+    }
+
+    @RolesAllowed({"ADMIN","owner"})
+    @JWTToken
+    @GET
+    @Path("/jms")
+    @Produces("application/json")
+    public String getMessage() {
+        //Users users = gson.fromJson(info,com.example.javaeefinal.model.Users.class);
+        return service.getMessage();
+    }
+
     // get methods
     @RolesAllowed({"ADMIN","owner"})
     @JWTToken
+    @ListFilterInt
     @GET
     @Produces("application/json")
     @Path("/getAddress")

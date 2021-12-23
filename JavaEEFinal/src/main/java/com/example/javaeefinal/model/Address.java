@@ -3,13 +3,12 @@ package com.example.javaeefinal.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Collections;
+import java.util.Set;
 
 @Entity
 @NotNull
@@ -20,6 +19,11 @@ public class Address {
     private String streetName;
     private String streetNumber;
     private String created_at;
+    private Building buildingId;
+
+    public Address() {
+
+    }
 
     public String getCreated_at() {
         return this.created_at;
@@ -84,7 +88,6 @@ public class Address {
 
         this.created_at = resDate;
     }
+    
 
-    public Address() {
-    }
 }
