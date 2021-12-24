@@ -3,10 +3,7 @@ package com.example.javaeefinal.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -14,13 +11,14 @@ import java.time.format.DateTimeFormatter;
 @Entity
 @NotNull
 @Getter @Setter
-public class Category {
+@Table(name = "category")
+public class VacancyCategory {
     private int id;
     private String title;
     private String description;
     private String created_at;
 
-    public Category () {
+    public VacancyCategory() {
 
     }
 
@@ -32,7 +30,7 @@ public class Category {
         this.created_at = created_at;
     }
 
-    public Category (int id, String title, String description, String created_at) {
+    public VacancyCategory(int id, String title, String description, String created_at) {
         this.id = id;
         this.title = title;
         this.description = description;

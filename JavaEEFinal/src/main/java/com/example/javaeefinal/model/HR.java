@@ -3,10 +3,7 @@ package com.example.javaeefinal.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -14,7 +11,8 @@ import java.time.format.DateTimeFormatter;
 @Entity
 @NotNull
 @Getter @Setter
-public class HumanResources {
+@Table(name = "humanresources")
+public class HR {
     private int id;
     private String firstName;
     private String secondName;
@@ -22,10 +20,10 @@ public class HumanResources {
     private String contactNumber;
     private String created_at;
 
-    public  HumanResources () {
+    public HR() {
 
     }
-    public HumanResources(int id, String firstName, String secondName, String email, String contactNumber, String created_at) {
+    public HR(int id, String firstName, String secondName, String email, String contactNumber, String created_at) {
         this.id = id;
         this.firstName = firstName;
         this.secondName = secondName;

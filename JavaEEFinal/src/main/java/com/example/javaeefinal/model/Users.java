@@ -26,6 +26,7 @@ public class Users {
     private int address_id;
     private Address addressByAddressId;
     private String created_at;
+    private UserNewsInfo news_info;
 
     public Users() {
 
@@ -109,6 +110,7 @@ public class Users {
         this.password = password;
     }
 
+
     @ManyToOne
     @PrimaryKeyJoinColumn(name = "address_id", referencedColumnName = "id")
     public Address getAddressByAddressId() {
@@ -126,4 +128,6 @@ public class Users {
     public void setAddressByAddressId(Address addressByAddressId) {
         this.addressByAddressId = addressByAddressId;
     }
+
 }
+

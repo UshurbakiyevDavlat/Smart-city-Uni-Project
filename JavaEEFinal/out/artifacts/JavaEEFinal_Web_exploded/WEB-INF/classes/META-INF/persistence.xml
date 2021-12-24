@@ -8,9 +8,9 @@
         <class>com.example.javaeefinal.model.Address</class>
         <class>com.example.javaeefinal.model.Building</class>
         <class>com.example.javaeefinal.model.BuildingCategory</class>
-        <class>com.example.javaeefinal.model.Category</class>
-        <class>com.example.javaeefinal.model.HumanResources</class>
-        <class>com.example.javaeefinal.model.Job</class>
+        <class>com.example.javaeefinal.model.VacancyCategory</class>
+        <class>com.example.javaeefinal.model.HR</class>
+        <class>com.example.javaeefinal.model.Vacancy</class>
         <class>com.example.javaeefinal.model.News</class>
         <class>com.example.javaeefinal.model.Users</class>
         <properties>

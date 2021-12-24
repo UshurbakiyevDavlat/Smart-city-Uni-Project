@@ -144,8 +144,8 @@ public class Administration {
     @Transactional(rollbackOn = SQLException.class,
             dontRollbackOn = EntityExistsException.class)
     @SuppressWarnings("SqlResolve")
-    public List<Category> getCategory() {
-        List<Category> category = new ArrayList<>();
+    public List<VacancyCategory> getCategory() {
+        List<VacancyCategory> vacancyCategory = new ArrayList<>();
 
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM category");
@@ -153,7 +153,7 @@ public class Administration {
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                category.add(new Category(
+                vacancyCategory.add(new VacancyCategory(
                         resultSet.getInt("id"),
                         resultSet.getString("title"),
                         resultSet.getString("description"),
@@ -166,14 +166,14 @@ public class Administration {
             e.printStackTrace();
         }
 
-        return category;
+        return vacancyCategory;
     }
 
     @Transactional(rollbackOn = SQLException.class,
             dontRollbackOn = EntityExistsException.class)
     @SuppressWarnings("SqlResolve")
-    public List<HumanResources> getHumanResources() {
-        List<HumanResources> humanResources = new ArrayList<>();
+    public List<HR> getHumanResources() {
+        List<HR> humanResources = new ArrayList<>();
 
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM humanresources");
@@ -181,7 +181,7 @@ public class Administration {
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                humanResources.add(new HumanResources(
+                humanResources.add(new HR(
                         resultSet.getInt("id"),
                         resultSet.getString("firstname"),
                         resultSet.getString("secondname"),
@@ -202,8 +202,8 @@ public class Administration {
     @Transactional(rollbackOn = SQLException.class,
             dontRollbackOn = EntityExistsException.class)
     @SuppressWarnings("SqlResolve")
-    public List<Job> getJob() {
-        List<Job> jobs = new ArrayList<>();
+    public List<Vacancy> getJob() {
+        List<Vacancy> vacancies = new ArrayList<>();
 
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM job");
@@ -211,7 +211,7 @@ public class Administration {
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                jobs.add(new Job(
+                vacancies.add(new Vacancy(
                         resultSet.getInt("id"),
                         resultSet.getString("title"),
                         resultSet.getString("description"),
@@ -226,7 +226,7 @@ public class Administration {
             e.printStackTrace();
         }
 
-        return jobs;
+        return vacancies;
     }
 
     @Transactional(rollbackOn = SQLException.class,

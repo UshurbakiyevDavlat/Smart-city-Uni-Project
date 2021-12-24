@@ -11,13 +11,14 @@ import java.time.format.DateTimeFormatter;
 @Entity
 @NotNull
 @Getter @Setter
-public class Job {
+@Table(name = "job")
+public class Vacancy {
     private int id;
     private String title;
     private String description;
     private double salary;
     private int hr_id;
-    private HumanResources humanResourcesByHrId;
+    private HR HRByHrId;
     private String created_at;
 
     public String getCreated_at() {
@@ -28,7 +29,7 @@ public class Job {
         this.created_at = created_at;
     }
 
-    public Job() {
+    public Vacancy() {
 
     }
 
@@ -40,7 +41,7 @@ public class Job {
         this.hr_id = hr_id;
     }
 
-    public Job (int id, String title, String description, double salary, int hr_id, String created_at) {
+    public Vacancy(int id, String title, String description, double salary, int hr_id, String created_at) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -99,11 +100,11 @@ public class Job {
 
     @ManyToOne
     @PrimaryKeyJoinColumn(name = "hr_id", referencedColumnName = "id")
-    public HumanResources getHumanResourcesByHrId() {
-        return humanResourcesByHrId;
+    public HR getHumanResourcesByHrId() {
+        return HRByHrId;
     }
 
-    public void setHumanResourcesByHrId(HumanResources humanResourcesByHrId) {
-        this.humanResourcesByHrId = humanResourcesByHrId;
+    public void setHumanResourcesByHrId(HR HRByHrId) {
+        this.HRByHrId = HRByHrId;
     }
 }

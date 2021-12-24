@@ -19,7 +19,7 @@ public class News {
     private String title;
     private String description;
     private String created_at;
-
+    private UserNewsInfo news_info;
     public News() {
 
     }

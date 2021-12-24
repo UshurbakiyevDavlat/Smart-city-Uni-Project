@@ -37,7 +37,6 @@ public class AdministrationService {
 
     public List<Address> getAddresses() {
         return repository.getAddresses();
-
     }
 
     public List<Building> getBuildings() {
@@ -48,15 +47,15 @@ public class AdministrationService {
         return repository.getBuildingCategory();
     }
 
-    public List<Category> getCategory() {
+    public List<VacancyCategory> getCategory() {
         return repository.getCategory();
     }
 
-    public List<HumanResources> getHumanResources() {
+    public List<HR> getHumanResources() {
         return repository.getHumanResources();
     }
 
-    public List<Job> getJob() {
+    public List<Vacancy> getJob() {
         return repository.getJob();
     }
 
